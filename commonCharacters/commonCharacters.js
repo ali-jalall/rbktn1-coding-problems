@@ -13,5 +13,27 @@
 
 
 var commonCharacters = function(string1, string2) {
-  // TODO: Your code here!
+  var newArr = []; // Variable to save the Result
+  var elm; // Var to save each elm in the Arr
+  var firstArr = string1.split('');
+  var secondArr = string2.split('');  
+  // First we iterate Over the Arr
+  for(var i = 0; i < firstArr.length; i++){
+  	// Save Each element inside elm variable
+  	elm = firstArr[i];
+  		// So here we check if our new Array includes the elm ?? and check if the element is a space ' '
+  		// If so that means that we already pushed that element so we don't need to push it again
+  		// and the empty string we don't need to push it
+  		// So Continue Iterating
+	  	if(newArr.includes(elm) || elm === ' '){
+				continue;
+			}
+			// And If the second array contains our elm
+			if(secondArr.includes(elm)){
+				// Push it
+				newArr.push(elm);
+			}
+  }
+
+  return newArr.join('')
 };
