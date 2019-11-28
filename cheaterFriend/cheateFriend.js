@@ -14,6 +14,23 @@
 
 // It happens that there are several possible (a, b). The function returns an empty array (or an empty string) if no possible numbers are found which will prove that my friend has not told the truth! (Go: in this case return nil).
 //
-//
 // Example:
 // removNb(26) should return [ {15, 21}, {21, 15} ]
+
+function removeNB (number){
+	var arr = [];
+	var arrOfNumbers = [];
+	var result = 0;
+	for(var i = 1; i <= number; i++){
+		arrOfNumbers.push(i);
+		result += i;
+	}
+	for(var i = 0; i < arrOfNumbers.length; i++){
+		for(var j = 0; j < number; j++){
+			if(arrOfNumbers[i] * arrOfNumbers[j] === result - (arrOfNumbers[i] + arrOfNumbers[j])){
+				arr.push(arrOfNumbers[i] , arrOfNumbers[j])
+			}
+		}
+	}
+	return arr;
+}
