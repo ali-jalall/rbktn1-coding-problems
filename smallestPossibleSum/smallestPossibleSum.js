@@ -28,3 +28,34 @@
 // Additional notes:
 
 // There are performance tests consisted of very big numbers and arrays of size at least 30000. Please write an efficient algorithm to prevent timeout.
+
+
+
+///////////////////////////////////////////////////////////////// 
+//  I Not happy with This Answer But this is what i GOt (O_O)  //
+/////////////////////////////////////////////////////////////////
+
+function solution(array) {
+	var sum = 0;
+	// First we Iterate Over Array With i
+	for (var i = 0; i < array.length; i++) {
+		// Then Iterate With J Starting from the length of The array
+		for (var j = array.length - 1; j >= 0; j--) {
+			// If array[j] > array[i]
+			if (array[j] > array[i]){
+				// Change the Element
+				array[j] = array[j] - array[i];
+			}
+			// Same With I & J
+			if (array[i] > array[j]){
+				// Same
+				array[i] = array[i] - array[j];
+			}
+		}
+	}
+	// This is A stupid Move to calc The sum but i don't care
+	for(var i = 0; i < array.length; i++){
+		sum += array[i]
+	}
+	return sum;
+}
