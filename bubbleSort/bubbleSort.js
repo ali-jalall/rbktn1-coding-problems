@@ -33,6 +33,36 @@
 // Feel free to add helper functions if needed.
 
 
+// This is Might be the Worst solution And it's not even Correct
 var bubbleSort = function(array) {
-  // Your code here.
+	// I am iterating three times so i make sure that it's sorted
+	// First
+	for (var i = 0; i < array.length; i++) {
+	 	if(array[i] > array[i + 1]){
+	 		var temp = array[i];
+   		array[i] = array[i + 1];
+  		array[i + 1] = temp;
+  	}
+	}	
+
+	// Second
+	for(var j = 0; j < array.length; j++){
+		if(array[j] > array[j + 1]){
+			var temp2 = array[j];
+   		array[j] = array[j + 1];
+  		array[j + 1] = temp2;
+		}
+	}
+
+	// Third
+	for(var k = 0; k < array.length; k++){
+		if(array[k] > array[k + 1]){
+			var temp3 = array[k];
+   		array[k] = array[k + 1];
+  		array[k + 1] = temp3;
+		}
+	}
+
+	// I know that i can make use of recursion but i couldn't figured out the stop condition
+  return array
 };
