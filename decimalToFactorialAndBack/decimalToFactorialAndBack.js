@@ -21,3 +21,37 @@
 // The second one will decode a string with a factorial representation and produce the decimal representation : factString2Dec(str).
 
 // Given numbers will be positive.
+
+// First i hate Math
+// Second i don't understand the question
+// Third WHERE IS THE QUESTION ?
+
+function dec2FactString(nb) {
+	// they ask to return a string so we create one
+	var str = '';
+
+	// i think that i should do For loop i don't know why
+	for (var i = 0; i < nb; i++) {
+		// 0_0 //
+	}
+
+	// for sure return str
+	return str
+}
+
+function factString2Dec(str) {
+	// i think i should split() the str
+	var arr = str.split('');
+	// they ask to return a number so we create one
+	var dec ;
+
+	// i think that i should do For loop i don't know why
+	for (var i = 0; i < arr.length; i++) {
+		// 0_0 //
+	}
+
+	// for sure return dec
+	return dec
+}
+
+// Hope That Answers The Question
