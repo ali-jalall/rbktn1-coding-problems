@@ -35,14 +35,49 @@ var Tree = function(value) {
   this.children = [];
 };
 
+// if (Array.isArray(this.children[i])) {
+//   each (this.children[i])
+// }
+
 Tree.prototype.DFSelect = function(filter) {
+  var newArr = [];
+    for (var i = 0; i < this.children.length; i++) {
+      if (Array.isArray(this.children[i])) {
+        each(this.children[i], filter);
+      }
+      if ( filter(this.children[i], i) ) {
+        newArr.push(this.children[i])
+      }
+    }
+  return newArr;
 };
 
+var filter = function(arr, func) {
+  var newArr = [];
+  for (var i = 0; i < arr.length; i++) {
+      if ( func(arr[i]) ) {
+          newArr.push(arr[i]);
+      }
+  }
+  return newArr;
+}
 
+// To iterate Over Arrays //
+var each = function (coll, func) {
+  if (!Array.isArray(coll)) {
+    for (var key in coll) {
+      func (coll[key], key);
+    }
+  } else {
+    for (var i = 0; i < coll.length; i++) {
+      func (coll[i], i);
+    }
+  }
+}
 
 /**
  * You shouldn't need to change anything below here, but feel free to look.
-  */
+*/
 
 /**
   * add an immediate child
