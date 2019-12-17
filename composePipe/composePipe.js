@@ -33,8 +33,28 @@
 
 'use strict';
 
-var compose = function() {
+var compose = function(func1, func2) {
+    return function (arg) {
+        return func1(func2(arg));
+    }
 };
 
-var pipe = function() {
+var greet = function(name){ return 'hi: ' + name;}
+var exclaim = function(statement) { return statement.toUpperCase() + '!';}
+var welcome = compose(greet, exclaim);
+welcome('phillip'); // 'hi: PHILLIP!'
+
+//
+
+var pipe = function(func1, func2, func3) {
+	return function (number) {
+		var res = func1(number)
+		res = func2(res)
+		return func3(res);
+	}
 };
+
+var add2 = function(number){ return number + 2; }
+var multiplyBy3 = function(number){ return number * 3; }
+pipe(add2, multiplyBy3)(5) // 21
+pipe(add2, multiplyBy3, multiplyBy3)(5) // 63
