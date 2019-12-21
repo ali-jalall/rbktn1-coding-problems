@@ -37,6 +37,45 @@
  *
  */
 
+// for (var func of tasks) {
+//   results.push(func((res) => {results.push(res)}));
+// }
 
-var asyncMap = function(tasks, callback) {
-};
+// tasks is array of functions
+// we need to take them one by one
+// save the result in callback
+
+// tasks = tasks[0];
+// tasks.splice(0, 1);
+// tasks((result) => {
+  //   results.push(result);
+  // })
+  // asyncMap(tasks, callback);
+  // if (tasks.length === 0) {
+  //   callback(results);
+  // }
+  //   tasks.forEach((func) => {
+  //       func((res) => {
+  //          str = res;
+  //       })
+  //   })
+
+  var asyncMap = function(tasks, callback) {
+    var results = [];
+    var str = '';
+    
+    // what i am trying to do is iterate over tasks
+    for (var x = 0; x < tasks.length; x++) {
+      // take each task
+      var func = tasks[x];
+      // invoke it
+      func((res) => {
+          // save the result of it in array
+          results.push(res);    
+      })
+    }
+    console.log(results)
+  
+    callback(results);
+    
+  };
