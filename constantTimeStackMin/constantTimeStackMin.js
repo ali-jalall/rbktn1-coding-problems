@@ -36,7 +36,7 @@
   
     // return the minimum value in the stack
     this.min = function() {
-      return Math.min(this.stack)
+      return Math.min(...this.stack)
     };
 
   };
