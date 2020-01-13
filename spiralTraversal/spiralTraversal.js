@@ -42,3 +42,12 @@ spiralTraversal([[ 1 ], [ 2 ], [ 3 ], [ 4 ]])	// [ 1, 2, 3, 4 ]
 
 spiralTraversal([[ 1, 2, 3, 4, 5, 6, 7 ]]) // [ 1, 2, 3, 4, 5, 6, 7 ]
 */
+
+
+function spiralTraversal (array) {
+  let newArr = [];
+  for (var element of array) {
+    
+  }
+  return newArr;
+}
