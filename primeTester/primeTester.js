@@ -9,4 +9,20 @@ primeTester(1) // false
 
 */
 
-function primeTester(n) {}
+// if ( n === 2 ) return true
+// if ( n > 1 ) {
+//   for (let i = 2; i < n; i++) {
+//     if (n % i === 0) {
+//       return false
+//     }
+//   }
+// }
+// return false
+
+function primeTester(n) {
+  if ( n === 2 ) return true;
+  for (var i = 2; i < n; i++) {
+    if ( n % i === 0 ) return false
+  }
+  return true
+}
