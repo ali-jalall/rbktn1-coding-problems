@@ -53,8 +53,8 @@ function solution(array) {
 			}
 		}
 	}
-	// This is A stupid Move to calc The sum but i don't care
-	for(var i = 0; i < array.length; i++){
+	// This is A stupid Move to calc The sum but i don't car
+e	for(var i = 0; i < array.length; i++){
 		sum += array[i]
 	}
 	return sum;

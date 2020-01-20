@@ -21,6 +21,7 @@ characterFrequency("") -->  [ ]
 // so push it with counter 1
 // else which mean that we added this element before
 // so add it and increase the counter
+
 function characterFrequency(string) {
 	// debugger;
 	var arrOfChars = string.split('');
