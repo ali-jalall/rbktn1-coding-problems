@@ -54,5 +54,31 @@ var numbersToPlace = {
 };
 
 function numberToEnglish(number) {
-  // your code here...
+
+  let newString = '';
+  // first we count the digits number ex: 3 -> hundred, 4 -> thousand, 6 -> million, etc ...
+  let oldString = number.toString()
+
+  for (let i = 0; i < oldString.length; i++) {
+    let value = oldString[i];
+    let length =  oldString.length - i;
+    var zeros = '1'
+    for (let j = 1; j < length; j++) {
+      zeros+= '0';
+    }
+    if (i === 0) {
+      newString += numbersToWords[value] + ' ' + numbersToPlace[zeros]
+    } else {
+      newString += numbersToPlace[zeros] + ' ' +  numbersToWords[value]
+    }
+    
+    numberToEnglish(oldString.slice(1))
+  }
+  
+  return newString
+  // check the first number and put it before the above ex : 500 -> five hundered
+  // check the number before it and check how many numbers after it, ex: 570 -> five hundred seventy
+  // check the last number and put it!
+
+  // return numbersToWords[number]
 }
