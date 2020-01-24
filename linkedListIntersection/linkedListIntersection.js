@@ -46,10 +46,6 @@
   list2.next.next = Node(7)
   list2.next.next.next = Node(8)
 
-  console.log(list1, list2)
-
-  // console.log(list1)
-
   function linkedListIntersection(list1, list2) {
     let list1Values = '';
     let list2Values = '';
@@ -64,12 +60,6 @@
       linkedListIntersection(list1, list2.next)
     }
 
-    // for (let element in list1Values) {
-    //   if (list1Values[element] !== null) {
-    //     let temp = getValues(element);
-    //     console.log(temp)
-    //   }
-    // }
     return list1Values
   }
 
