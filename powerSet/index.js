@@ -19,5 +19,43 @@ powerSet("horse") // [ "", "e", "eh", "eho", "ehor", "ehors", "ehos", "ehr", "eh
 */
 
 function powerSet(string) {
-  // your code here...
+  // debugger
+  let sorted = sortAlphabetically(string);
+  let newArr = [];
+  
+  newArr.push('');
+  
+  for (let i = 0; i < sorted.length; i++) {
+    let newString = '';
+    newArr.push(sorted[i]);
+    newString += sorted[i]
+    
+    for (let j = i + 1; j < sorted.length; j++) {
+      newString += sorted[j];
+      newArr.push(newString);
+    }
+
+  }
+  return newArr
+}
+
+
+// Sort the string alphabetically remove dupilcate
+// Ex: 'obama' -> "a", "b", "m", "o"
+
+const sortAlphabetically = (string) => {
+  let splitedStr = string.split('');
+  let temp;
+  for (let i = 0; i < splitedStr.length; i++) {
+    for (let j = i + 1; j < splitedStr.length; j++) {
+      if (splitedStr[i] > splitedStr[j]) {
+        temp = splitedStr[i];
+        splitedStr[i] = splitedStr[j]
+        splitedStr[j] = temp;
+      }
+    }
+  }
+  // remove the duplicate
+  let uniqe = Array.from(new Set(splitedStr))
+  return uniqe
 }
