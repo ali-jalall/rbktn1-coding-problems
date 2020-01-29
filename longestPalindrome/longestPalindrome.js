@@ -6,5 +6,22 @@ Other palindromes in the above string include "dad", "ete", " dad " (including w
 */
 
 function longestPalindrome(string) {
-  // your code here...
+  // Word to be the exact chars front and backward
+  let forward = [];
+  let backward = [];
+  let splited = string.split(' ');
+
+  for (let i = 0; i < string.length; i++) {
+    forward.push(string[i])
+  }
+
+  for (let i = string.length - 1; i >= 0; i--) {
+    backward.push(string[i])
+  }
+
+  // console.log(forward.includes(splited[0]))
+  console.log(splited[0])
+
+  console.log(`Forward: ${forward.join('')}`)
+  console.log(`Backward: ${backward.join('')}`)
 }
