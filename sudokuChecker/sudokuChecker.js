@@ -21,6 +21,11 @@ Example input:
 
 
 function sudokuChecker(board) {
-  // Your code here.
-  
+  let newBoard = [];
+  let newArr = Array(3);
+  for (let i = 0; i < board.length; i++) {
+    newArr.push(board[i]); 
+  }
+  newBoard.push(newArr)
+  return newBoard
 }
