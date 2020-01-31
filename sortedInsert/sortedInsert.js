@@ -13,6 +13,7 @@ The stack will have the methods:
   
 You can also use count to view how many elements are in the stack. 
 The stack implementation is available to view below.
+**
 */
 
 // the stack class is exposed here for reference, you may or may not utilize additional stacks in your algorithm.
