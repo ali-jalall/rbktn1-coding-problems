@@ -6,7 +6,11 @@ Hint: Use Array.isArray(elem) to see if something is an array.
 Example: 
 flatten([[1, 1], [4], 3, [3], 4, [6, 7]]) // [1, 1, 4, 3, 3, 4, 6, 7]
 */
+let i = 0;
+function flatten(arr, iterator) {
+  if (iterator === 5) {
+    return arr.flat(Infinity);
+  }
 
-function flatten(arr) {
-  // your code here...
+  return flatten(arr, i++)
 }
