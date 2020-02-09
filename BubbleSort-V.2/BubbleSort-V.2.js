@@ -48,18 +48,17 @@ const bubbleSort = (input, index = 0) => {
     return input;
   }
   
-  function inner (input, count = 0) {
-    let element = input[count]
-    if (count === input.length - 1) {
-      return input;
+  function inner (input, index = 0) {
+    if (index === input.length - 1) {
+      return;
     }
-    if (input[count] > input[count + 1]) {
-      let temp = input[count + 1];
-      input[count + 1] = element;
-      input[count] = temp;
+    if (input[index] > input[index + 1]) {
+      let temp = input[index + 1];
+      input[index + 1] = input[index];
+      input[index] = temp;
     }
 
-    return inner(input, ++count)
+    inner(input, ++index)
   }
 
   inner(input);
