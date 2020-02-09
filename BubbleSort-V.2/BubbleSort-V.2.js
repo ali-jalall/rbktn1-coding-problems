@@ -17,23 +17,55 @@
 // Output:	[ -10, -10, 2, 4, 20, 299 ]
 
 
-const bubbleSort = (input, count = 0) => {
-  let inputLength = input.length;
+// const bubbleSort = (input, count = 0) => {
+//   let inputLength = input.length;
   
-  if (count === inputLength) {
+//   if (count === inputLength) {
+//     return input;
+//   }
+
+//   for (let i = 0; i < input.length; i++) {
+//     let element = input[i];
+//     if (element > input[i + 1]) {
+//       let temp = input[i + 1];
+//       input[i + 1] = element;
+//       input[i] = temp;
+//     }
+//   }
+
+//   return bubbleSort(input, ++count);
+// }
+
+// console.log(bubbleSort([ 20, -10, -10, 2, 4, 299 ]))
+
+
+
+
+
+
+const bubbleSort = (input, index = 0) => {
+  if (index === input.length - 1) {
     return input;
   }
-
-  for (let i = 0; i < input.length; i++) {
-    let element = input[i];
-    if (element > input[i + 1]) {
-      let temp = input[i + 1];
-      input[i + 1] = element;
-      input[i] = temp;
+  
+  function inner (input, count = 0) {
+    let element = input[count]
+    if (count === input.length - 1) {
+      return input;
     }
+    if (input[count] > input[count + 1]) {
+      let temp = input[count + 1];
+      input[count + 1] = element;
+      input[count] = temp;
+    }
+
+    return inner(input, ++count)
   }
 
-  return bubbleSort(input, ++count);
+  inner(input);
+
+  return bubbleSort(input, ++index);
+
 }
 
-console.log(bubbleSort([ 20, -10, -10, 2, 4, 299 ]))
+console.log(bubbleSort([ 45, -22, 0, 12, -100 ]))
