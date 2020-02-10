@@ -1,7 +1,12 @@
 /*
 Implement a function that sorts an array of numbers using the "mergesort" algorithm.
 
-Mergesort uses a divide-and-conquer strategy. It begins by treating the input list of length N as a set of N "sublists" of length 1, which are considered to be sorted. Adjacent sublists are then "merged" into sorted sublists of length 2, which are merged into sorted sublists of length 4, and so on, until only a single sorted list remains. (Note, if N is odd, an extra sublist of length 1 will be left after the first merge, and so on.)
+Mergesort uses a divide-and-conquer strategy. 
+It begins by treating the input list of length N as a set of N "sublists" of length 1, 
+which are considered to be sorted. Adjacent sublists are then "merged" into sorted sublists of length 2, 
+which are merged into sorted sublists of length 4, and so on, until only a single sorted list remains. 
+
+(Note, if N is odd, an extra sublist of length 1 will be left after the first merge, and so on.)
 
 This can be implemented using either a recursive ("top-down") or an iterative ("bottom-up") approach.
 
@@ -36,7 +41,8 @@ Illustration of a recursive approach:
 
 Step 2 might seem a bit mystical - how do we sort both sides? 
 The simple answer is that we use mergesort! After all, mergesort sorts arrays, right? 
-We can test this on [4, 7, 4] by just following the steps above but imagining that [4, 7, 4] is the whole array, which is what happens when you call mergesort on it.
+We can test this on [4, 7, 4] by just following the steps above but imagining that [4, 7, 4] is the whole array, 
+which is what happens when you call mergesort on it.
 
    1.Split the input array in half
      [4, 7, 4] -> [4], [7, 4]
@@ -68,8 +74,35 @@ Mergesort is an optimized sorting algorithm which is a common choice to implemen
 
 Array.prototype.sort = function() {
   console.log("please don't use the native sort function!");
+  console.log("Don't worry am not gonna use it");
 };
 
-function mergeSort(arr) {
-  // your code here...
+// [4, 7, 4, 3, 9, 1, 2]
+function mergeSort(arr, index = 0, index2 = 0) {
+  let newArr = [];
+  let tempLength ;
+  if (arr[0].length === undefined) {
+    tempLength = undefined
+  }
+  if (index === arr.length) {
+    return newArr;
+  }
+  // Initial Step //
+  if ( !tempLength ) {
+    for (let i = 0; i < arr.length; i++) {
+      newArr.push([arr[i]]);
+    }
+  } // [[4],[7],[4],[3],[9],[1],[2]]
+
+  if (newArr[index] > newArr[index2]) {
+    let temp = newArr[index];
+    newArr[index2] = newArr[index];
+    newArr[index] = temp;
+  }
+
+  return mergeSort(newArr, index, ++index2)
+
+  return newArr
 }
+
+console.log(mergeSort([4, 7, 4, 3, 9, 1, 2]))
