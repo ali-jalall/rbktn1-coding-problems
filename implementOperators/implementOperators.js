@@ -12,13 +12,30 @@ EXAMPLES:
 */
 
 var multiply = function(x, y) {
-  // your code here...
+  let result = 0;
+  for (let i = 1; i <= y; i++) {
+    result += x;
+  }
+  return result
 };
 
+
 var divide = function(x, y) {
-  // your code here...
+  let count = 1;
+  for (let i = 0; i < x; i++) {
+    x -= y;
+    count++;
+  }
+  return count;
 };
 
 var modulo = function(x, y) {
-  // your code here...
+  let i = 0;
+  while (i < x) {
+    x -= y;
+    i++
+  }
+  return x
 };
+
+console.log(divide(50, 10))
