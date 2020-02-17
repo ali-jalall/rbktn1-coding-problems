@@ -50,7 +50,7 @@ BinaryHeap.prototype.getRoot = function () {
 }
 
 BinaryHeap.prototype.insert = function (value) {
-
+  if (this._compare(value, this.getRoot))
 }
 
 BinaryHeap.prototype.removeRoot = function () {
