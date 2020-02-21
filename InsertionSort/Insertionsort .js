@@ -2,8 +2,10 @@
 // Algorithm of Insertion Sort:
 
 //1- Insertion sort iterates, consuming one input element each repetition, and growing a sorted output list.
-//2- At each iteration, insertion sort removes one element from the input data, finds the location it belongs within the sorted list, 
+//2- At each iteration, insertion sort removes one element from the input data, 
+// finds the location it belongs within the sorted list, 
 // and inserts it there.
+
 // 3-It repeats until no input elements remain.
 
 // Example 1:
@@ -27,3 +29,31 @@
  * @return {ListNode}
  */
 
+function ListNode(val) {
+  this.val = val;
+  this.next = null;
+}
+
+const insertionSort = (linkedList) => {
+  if (!!linkedList) {
+    return linkedList
+  }
+  while (linkedList) {
+    if (linkedList.value > linkedList.next.value) {
+      let temp = linkedList.next.value;
+      linkedList.next.value = linkedList.value;
+      linkedList.value = temp;
+    }
+  }
+  insertionSort(linkedList.next)
+  // return linkedList;/
+}
+
+let root = new ListNode(4)
+root.next = new ListNode(2)
+root.next.next = new ListNode(0)
+root.next.next.next = new ListNode(-1)
+root.next.next.next.next = new ListNode(6)
+// console.log(root)
+
+console.log(insertionSort(root))
