@@ -13,8 +13,14 @@
 // n:"111"	 7
 // n:"1000"	 8 
 
-
-
-function binaryToDecimal (n) {
-// code gose here 
+const binaryToDecimal = (n) => {
+  let result = 0;
+  n = n.split('').reverse().join(''); // Reverse the string
+  for (let i = 0; i < n.length; i++) {
+    let thisPower = Math.pow(2, i);
+    result += (thisPower * Number(n[i]));
+  }
+  return result;
 }
+
+console.log(binaryToDecimal('1000'));

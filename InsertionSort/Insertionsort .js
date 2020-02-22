@@ -35,18 +35,18 @@ function ListNode(val) {
 }
 
 const insertionSort = (linkedList) => {
-  if (!!linkedList) {
+  if (!linkedList) {
     return linkedList
   }
   while (linkedList) {
     if (linkedList.value > linkedList.next.value) {
-      let temp = linkedList.next.value;
+      let temp = linkedList.value;
       linkedList.next.value = linkedList.value;
-      linkedList.value = temp;
+      linkedList.next.value = temp;
     }
   }
-  insertionSort(linkedList.next)
-  // return linkedList;/
+  return insertionSort(linkedList.next)
+  return linkedList;
 }
 
 let root = new ListNode(4)
