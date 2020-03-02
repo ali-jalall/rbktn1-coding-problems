@@ -1,6 +1,7 @@
 // Arrayception
 
-// Given an array of arbitrarily nested arrays, return n, where n is the deepest level that contains a non-array value.
+// Given an array of arbitrarily nested arrays, return n, where n is the
+// deepest level that contains a non-array value.
 // 
 
 // Examples
@@ -16,25 +17,45 @@
 //  array:
 //  [ [ [ ] ] ] ==>	0
 
+// itertae over array
+// if elm is array -> c++, recursion
+// otherwise continue..
 
-//  Almost Done :(
+// for (let element of array) {
+//   if (Array.isArray(element)) {
+//     arrayCeption(element, ++count);
+//   } else {
+//     newArr.push(count);
+//     count = 0;
+//     continue;
+//   }
+// }
+
+const arrayCeption = (array, count = 0) => {
+  let sum = 0
   
-let level = 1;
-let newObj = {};
-const arrayCeption = (array) => {
-  for (var i = 0; i < array.length; i++) {
-    if ( !Array.isArray(array[i]) ) {
-      newObj[array[i]] = level;
-      continue;
-    } else {
-      level++;
-      arrayCeption(array[i]);
+  function innerIterate (arr, count) {
+    if (!Array.isArray(arr)) {
+      return count;
+    }
+    for (let elm of arr) {
+      if (Array.isArray(elm)) {
+        innerIterate(elm, ++count);
+      } else {
+        return count
+      }
     }
   }
-  console.log(newObj)
-  return level
+
+  for (let element of array) {
+    if (Array.isArray(element)) {
+      console.log(innerIterate(element, count))
+    } else {
+      continue;
+    }
+  }
+
+  // console.log(sum)
 }
 
-
-// level++
-// return level
+console.log(arrayCeption([ [ 10, 20 ], [ [ 30, [ 40 ] ] ] ]))

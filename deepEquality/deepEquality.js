@@ -85,9 +85,12 @@ var deepEquals = function(apple, orange) {
 	   		isEqual = true;
 	   		break;
 	   	} else {
-	   		isEqual = false
+	   		return false
 	   	}
 		}
 	}
 	return isEqual;
 };
+
+console.log(deepEquals({a:1, b: {c:3}},{a:1, b: {c:3}}))
+console.log(deepEquals({a:1, b: {c:5}},{a:1, b: {c:6}}))

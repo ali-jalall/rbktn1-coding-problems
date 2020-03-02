@@ -40,3 +40,5 @@ var allAnagrams = function(string) {
   anagram()
   return result
 };
+
+console.log(allAnagrams('abc'))

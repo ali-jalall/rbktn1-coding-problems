@@ -37,3 +37,5 @@ var commonCharacters = function(string1, string2) {
 
   return newArr.join('')
 };
+
+console.log(commonCharacters('acexivou', 'aegihobu'));
