@@ -23,20 +23,15 @@ characterFrequency("") -->  [ ]
 // so add it and increase the counter
 
 function characterFrequency(string) {
-	// debugger;
-	var arrOfChars = string.split('');
-	var array = [];
-	var count = 1;
-	for (var i = 0; i < arrOfChars.length; i++) {
-		for (var j = 0; j < array.length; j++) {
-			if(array[j].indexOf(arrOfChars[i]) === -1){
-				count = 1;
-				array.push([arrOfChars[i], count]);
-			} else {
-				array[arrOfChars[i], count++];
-			}
-		}		
-	}
-	return array
+  let newObj = {};
+  for (let char of string) {
+    newObj[char] = (newObj[char] + 1) || 1
+  }
+  let arrayFromObj = Object.keys(newObj).map(elm => {
+    return [elm, newObj[elm]]
+  })
+  
+  return arrayFromObj
 }
 
+console.log(characterFrequency(""));
