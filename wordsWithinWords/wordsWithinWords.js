@@ -7,6 +7,23 @@ nestedWordCount([ "gray", "grays", "ray", "rays", "strays" ]) // 'grays'
 
 */
 
-function nestedWordCount(words) {
-  // your code here...
+const nestedWordCount = (words) => {
+  let obj = {};
+  let result = "";
+  let acc = 0;
+  for(let i =0; i < words.length; i++){
+    obj[words[i]] = 0
+  	for(let j = 0; j < words.length; j++ ){
+  		if(words[i].includes(words[j])){
+  			obj[words[i]]++
+  		  if(obj[words[i]] > acc){
+          acc = obj[words[i]]
+          result = words[i]
+  			}
+  		}
+  	}
+  }
+  return result;
 }
+
+console.log(nestedWordCount([ "gray", "grays", "ray", "rays", "strays" ]))
