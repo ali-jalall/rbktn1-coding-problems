@@ -34,21 +34,13 @@ linkedList.next.next.next = Node('D')
 linkedList.next.next.next.next = Node('E')
 linkedList.next.next.next.next.next = linkedList
 
-var hasCycle = function(linkedList) {
-  let p1 = [];
-  let p2 = [];
-  let pointer1;
-  let pointer2 = linkedList;
-  let root;
-
-  while ( linkedList ) {
-    root = linkedList.value;
-    pointer1 = linkedList.next;
-
-    if (pointer1.value === root) {
-      return true;
-    }
+const hasCycle = (linkedList) => {
+  try {
+    JSON.stringify(linkedList)
+    console.log('sd')
+  } catch {
+    return false
   }
-
-  hasCycle(linkedList)
 };
+
+hasCycle(linkedList)
