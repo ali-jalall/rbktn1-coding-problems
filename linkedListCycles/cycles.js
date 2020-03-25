@@ -37,7 +37,7 @@ linkedList.next.next.next.next.next = linkedList
 const hasCycle = (linkedList) => {
   try {
     JSON.stringify(linkedList)
-    console.log('sd')
+    return true
   } catch {
     return false
   }
