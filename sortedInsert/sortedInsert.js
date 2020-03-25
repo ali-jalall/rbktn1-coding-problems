@@ -1,7 +1,8 @@
 /*
 Sorted Insert
 
-Given a sorted stack of integers (smallest integer at the top) and an element to insert, write a function – sortedInsert(stack, element) – which inserts the element into the correct position of the stack.
+Given a sorted stack of integers (smallest integer at the top) and an element to insert, 
+write a function – sortedInsert(stack, element) – which inserts the element into the correct position of the stack.
 
 sortedInsert should manipulate the original stack and return the original stack.
 
@@ -47,6 +48,27 @@ Stack.prototype.pop = function() {
   }
 };
 
-function sortedInsert(stack, element) {
-  // your code here...
+function sortedInsert(stack, element, i = 1) {
+  // if (element < stack.store[i]) {
+  //   stack.store[i + 1] = stack.store[i + 2];
+  // }
+
+  for (let key in stack.store) {
+    key = key + 2
+  }
+
+  return stack
 }
+
+let stack = new Stack(6);
+stack.push(4)
+stack.push(3)
+stack.push(2)
+
+console.log(sortedInsert(stack, 5));
+// Object.keys(stack.store).forEach(elm => {
+  //   if (element < stack.store[elm]) {
+  //     stack.push(element);
+  //     return stack;
+  //   }
+  // })
