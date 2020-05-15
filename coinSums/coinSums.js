@@ -19,15 +19,21 @@ In other words, find all the possible combinations of coins that sum to a given 
 */
 
 // HELPERS
-const coins = [1, 2, 5, 10, 20, 50, 100, 200];
-const englandCoins = ['1p', '2p', '5p', '10p', '20p', '50p', '100p', '200p'];
-
-const coinSums = (total) => {
-  let result = '';
-  for (let coin of coins) {
-    for (let engCoin of englandCoins) {
-      result += `${coin} * ${engCoin}`;
+const coinSums = (total, coins) => {
+  let counter = 0;
+  coins.sort((a, b) => a - b)
+  (function recurse(index, reminder) {
+    let coin = coins[index]
+    if (index === 0) {
+      reminder % coin === 0 && counter++
+      return;
     }
-  }
-  return result;
+    while (reminder >= 0) {
+      recurse(index - 1, reminder);
+      reminder -= coin
+    }
+  })(coins.length - 1, total)
+
+  return counter
 }
+console.log(coinSums(5, 4))

@@ -78,31 +78,37 @@ Array.prototype.sort = function() {
 };
 
 // [4, 7, 4, 3, 9, 1, 2]
-function mergeSort(arr, index = 0, index2 = 0) {
-  let newArr = [];
-  let tempLength ;
-  if (arr[0].length === undefined) {
-    tempLength = undefined
-  }
-  if (index === arr.length) {
-    return newArr;
-  }
-  // Initial Step //
-  if ( !tempLength ) {
-    for (let i = 0; i < arr.length; i++) {
-      newArr.push([arr[i]]);
+function mergeSort (arr) {
+  let leftSide = arr.slice(0, ((arr.length - 1) / 2))
+  let rightSide = arr.slice(((arr.length - 1) / 2), arr.length)
+
+  function innerSort (arr, index) {
+    if (index === arr.length - 1) {
+      return arr
     }
-  } // [[4],[7],[4],[3],[9],[1],[2]]
+    for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i] > arr[i + 1]) {
+        let temp = arr[i];
+        arr[i] = arr[i + 1];
+        arr[i + 1] = temp;
+      }
+    }
 
-  if (newArr[index] > newArr[index2]) {
-    let temp = newArr[index];
-    newArr[index2] = newArr[index];
-    newArr[index] = temp;
+    return innerSort(arr, ++index)
   }
+  let leftArrSorted = innerSort(leftSide, 0)
+  let rightArrSorted = innerSort(rightSide, 0)
 
-  return mergeSort(newArr, index, ++index2)
+  let index1 = 0
+  let index2 = 0
 
-  return newArr
+  while (index1 < leftArrSorted.length) {
+    for (let i = 0; i < leftArrSorted.length; i++) {
+      if (rightArrSorted[index1] < leftArrSorted[index1]) {
+        
+      }
+    }
+  }
 }
 
 console.log(mergeSort([4, 7, 4, 3, 9, 1, 2]))
