@@ -43,11 +43,48 @@ spiralTraversal([[ 1 ], [ 2 ], [ 3 ], [ 4 ]])	// [ 1, 2, 3, 4 ]
 spiralTraversal([[ 1, 2, 3, 4, 5, 6, 7 ]]) // [ 1, 2, 3, 4, 5, 6, 7 ]
 */
 
+function spiralTraversal(arr) {
+  let startRowIndex = 0;
+  let endRowIndex = arr.length - 1;
+  let startColIndex = 0;
+  let endColIndex = arr[0].length - 1;
+  let result = [];
 
-function spiralTraversal (array) {
-  let newArr = [];
-  for (var element of array) {
-    
+  while (startRowIndex <= endRowIndex && startColIndex <= endColIndex) {
+    for (let i = startColIndex; i <= endColIndex; i++) {
+      result.push(arr[startRowIndex][i]);
+    }
+    startRowIndex++;
+
+    for (let j = startRowIndex; j <= endRowIndex; j++) {
+      result.push(arr[j][endColIndex]);
+    }
+    endColIndex--;
+
+    if (startRowIndex <= endRowIndex) {
+      for (let k = endColIndex; k >= startColIndex; k--) {
+        result.push(arr[endRowIndex][k]);
+      }
+      endRowIndex--;
+    }
+
+    if (startColIndex <= endColIndex) {
+      for (let m = endRowIndex; m >= startRowIndex; m--) {
+        result.push(arr[m][startColIndex]);
+      }
+      startColIndex++;
+    }
   }
-  return newArr;
+
+  return result;
 }
+
+console.log(
+  spiralTraversal([
+    [1, 2, 3, 4, 5],
+    [6, 7, 8, 9, 10],
+    [11, 12, 13, 14, 15],
+    [16, 17, 18, 19, 20],
+    [21, 22, 23, 24, 25],
+  ])
+);
