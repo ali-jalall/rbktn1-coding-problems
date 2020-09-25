@@ -32,16 +32,16 @@
 // }
 
 const arrayCeption = (arr) => {
-  let result = [];
+  const result = [];
 
   function deepSearch(arr, count = 2) {
     // arr is array of depth level 2
     // loop over arr
-    for (let i = 0; i < arr.length; i++) {
-      // if arr[i] is array
-      if (Array.isArray(arr[i])) {
+    for (let elm of arr) {
+      // if elm is array
+      if (Array.isArray(elm)) {
         // recursion with inc count
-        return deepSearch(arr[i], ++count);
+        return deepSearch(elm, ++count);
       } else {
         // else continue
         continue;
@@ -51,11 +51,11 @@ const arrayCeption = (arr) => {
     return arr[0] ? count : 0
   }
 
-  for (let i = 0; i < arr.length; i++) {
-    // if arr[i] is array
-    // deepSearch(arr[i]);
+  for (let elm of arr) {
+    // if elm is array
+    // deepSearch(elm);
     // push count to result array
-    Array.isArray(arr[i]) ? result.push(deepSearch(arr[i])) : null
+    Array.isArray(elm) ? result.push(deepSearch(elm)) : null
   }
 
   return result.length ? Math.max(...result) : 1;
@@ -64,4 +64,4 @@ const arrayCeption = (arr) => {
 
 //  [ [ 10, 20 ], [ [ 30, [ 40 ] ] ] ] ==>	4
 
-console.log(arrayCeption([ [ [ ] ] ]));
+console.log(arrayCeption([ [ 10, 20 ], [ [ 30, [ 40 ] ] ] ]));
