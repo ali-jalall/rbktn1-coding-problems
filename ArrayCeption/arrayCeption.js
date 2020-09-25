@@ -2,7 +2,7 @@
 
 // Given an array of arbitrarily nested arrays, return n, where n is the
 // deepest level that contains a non-array value.
-// 
+//
 
 // Examples
 //  Input 	Output
@@ -31,31 +31,37 @@
 //   }
 // }
 
-const arrayCeption = (array, count = 0) => {
-  let sum = 0
-  
-  function innerIterate (arr, count) {
-    if (!Array.isArray(arr)) {
-      return count;
-    }
-    for (let elm of arr) {
-      if (Array.isArray(elm)) {
-        innerIterate(elm, ++count);
+const arrayCeption = (arr) => {
+  let result = [];
+
+  function deepSearch(arr, count = 2) {
+    // arr is array of depth level 2
+    // loop over arr
+    for (let i = 0; i < arr.length; i++) {
+      // if arr[i] is array
+      if (Array.isArray(arr[i])) {
+        // recursion with inc count
+        return deepSearch(arr[i], ++count);
       } else {
-        return count
+        // else continue
+        continue;
       }
     }
+
+    return arr[0] ? count : 0
   }
 
-  for (let element of array) {
-    if (Array.isArray(element)) {
-      console.log(innerIterate(element, count))
-    } else {
-      continue;
-    }
+  for (let i = 0; i < arr.length; i++) {
+    // if arr[i] is array
+    // deepSearch(arr[i]);
+    // push count to result array
+    Array.isArray(arr[i]) ? result.push(deepSearch(arr[i])) : null
   }
 
-  // console.log(sum)
-}
+  return result.length ? Math.max(...result) : 0;
+};
 
-console.log(arrayCeption([ [ 10, 20 ], [ [ 30, [ 40 ] ] ] ]))
+
+//  [ [ 10, 20 ], [ [ 30, [ 40 ] ] ] ] ==>	4
+
+console.log(arrayCeption([ [ 10, 20 ], [ [ 30, [ 40 ] ] ] ]));
