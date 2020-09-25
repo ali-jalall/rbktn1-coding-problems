@@ -58,10 +58,10 @@ const arrayCeption = (arr) => {
     Array.isArray(arr[i]) ? result.push(deepSearch(arr[i])) : null
   }
 
-  return result.length ? Math.max(...result) : 0;
+  return result.length ? Math.max(...result) : 1;
 };
 
 
 //  [ [ 10, 20 ], [ [ 30, [ 40 ] ] ] ] ==>	4
 
-console.log(arrayCeption([ [ 10, 20 ], [ [ 30, [ 40 ] ] ] ]));
+console.log(arrayCeption([ [ [ ] ] ]));
