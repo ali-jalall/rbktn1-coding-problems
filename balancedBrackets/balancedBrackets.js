@@ -1,6 +1,7 @@
 /*
 Balanced Brackets
-Given a string, return true if its arrangement of parenthesis (), curly-brackets {}, and square-brackets [] would be considered valid in code and mathematics (is balanced).
+Given a string, return true if its arrangement of parenthesis (), curly-brackets {}, and square-brackets [] would be considered valid
+in code and mathematics (is balanced).
 
 isBalanced("(x + y) - (4)") // true
 isBalanced("(((10 ) ()) ((?)(:)))") // true
@@ -10,63 +11,38 @@ isBalanced("[{]}") // false
 */
 
 
-var isBalanced = function(str) {
-  // debugger;
-  var parenthesis = '(';
-  var parenthesisClose = ')';
-  var brackets = '[';
-  var bracketsClose = ']';
-  var curly = '{';
-  var curlyClose = '}';
+const bracketsObject = {
+  '[': ']',
+  '{': '}',
+  '(': ')',
+  ']': '[',
+  '}': '{',
+  ')': '(',
+};
 
-  var isBalanced = false;
 
-  for (var i = 0; i < str.length; i++) {
-    if (str[i] === parenthesis) {
-      for (var j = i; j < str.length; j++) {
-        if (str[j] === bracketsClose || str[j] === curlyClose) {
-          return false;
-        }
-      }
-      if ( str.includes(parenthesisClose, i) ) {
-        isBalanced = true;
-      } else {
-        return false
-      }
-    }
-  }
+function isBalanced(str) {
+  let isBalanced = true;
+  // 1- Split str into arr
+  // 2- filter arr to keep only brackets and join as string.
+  str = str.split('').filter((val) => (bracketsObject[val])).join('');
 
-  for (var i = 0; i < str.length; i++) {
-    if (str[i] === brackets) {
-      for (var j = i; j < str.length; j++) {
-        if (str[j] === parenthesisClose || str[j] === curlyClose) {
-          return false;
-        }
-      }
-      if ( str.includes(bracketsClose, i) ) {
-        isBalanced = true;
-      } else {
-        return false
-      }
-    }
-  }
-
-  for (var i = 0; i < str.length; i++) {
-    if (str[i] === curly) {
-      for (var j = i; j < str.length; j++) {
-        if (str[j] === parenthesisClose || str[j] === bracketsClose) {
-          return false;
-        }
-      }
-      if ( str.includes(curlyClose, i) ) {
-        isBalanced = true;
-      } else {
-        return false
-      }
+  for (let i = 0; i < str.length; i++) {
+    // if the brackets at this index === the closing of this brackets ? continue;
+    if (bracketsObject[str[i]] === str[str.length - (i + 1)]) {
+      continue
+    } else {
+      // If not it means we have a flow in our string so return false
+      return false
     }
   }
 
   return isBalanced;
 };
 
-isBalanced("[{]}")
+console.log(isBalanced("(x + y) - (4)")) // true
+console.log(isBalanced("(((10 ) ()) ((?)(:)))")) // true
+console.log(isBalanced("[{()}]")) // true
+console.log(isBalanced("(50)(")) // false
+console.log(isBalanced("[{]}")) // false
+console.log(isBalanced("[{{[]}}]")) // true
